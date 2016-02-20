@@ -18,22 +18,32 @@ void loop() {
   Robot.updateIR(); // update the IR array
   if (Robot.IRarray[0] && Robot.IRarray[1] && Robot.IRarray[2] && Robot.IRarray[3] && Robot.IRarray[4])
     Robot.motorsWrite(25,25);//Make the robot go forward, full speed
+    delay(500);
   if (Robot.IRarray[0] && Robot.IRarray[1])
     Robot.motorsWrite(-25,25);//Make the robot rotate left, full speed
+    delay(500);
   if (Robot.IRarray[3] && Robot.IRarray[4])
     Robot.motorsWrite(25,-25);//Make the robot rotate right, full speed
+    delay(500);
   if (Robot.IRarray[2])
     Robot.motorsWrite(25,25);//Make the robot go forward, full speed
+    delay(500);
   if (Robot.IRarray[1])
     Robot.motorsWrite(25,25);
+    delay(500);
   if (Robot.IRarray[3])
     Robot.motorsWrite(25,25);
+    delay(500);
   if (Robot.IRarray[4])
     Robot.motorsWrite(-25,25);
+    delay(500);
   if (Robot.IRarray[0])
     Robot.motorsWrite(25,-25);
+    delay(500);
   if (Robot.IRarray[1] && Robot.IRarray[2] && Robot.IRarray[3])
     Robot.motorsWrite(25,25);//Make the robot go forward, full speed
+    delay(500);
   if (!Robot.IRarray[0] && !Robot.IRarray[1] && !Robot.IRarray[2] && !Robot.IRarray[3] && !Robot.IRarray[4])
     Robot.motorsStop(); //Make the robot stop
+    delay(500);
 }

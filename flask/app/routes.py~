@@ -1,0 +1,29 @@
+import requests
+import requests_cache
+
+from flask import Flask, render_template, request, jsonify
+
+app = Flask(__name__)
+app.config.from_object('config')
+requests_cache.install_cache('github_cache', backend='sqlite', expire_after=180)
+
+
+@app.route('/', methods=['GET', 'POST'])
+def home():
+    first = request.form.get('first')
+    second = request.form.get('second')
+    url = "https://api.github.com/users/comRamona"
+    response_dict = requests.get(url).json()
+    return render_template('home.html',response_dict=response_dict)
+
+@app.route('/about')
+def about():
+  return render_template('about.html')
+
+@app.route('/login')
+def about():
+  return render_template('login.html')
+
+
+if __name__ == '__main__':
+    app.run(debug=True)

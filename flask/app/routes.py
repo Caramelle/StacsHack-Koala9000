@@ -36,11 +36,13 @@ def hello():
     repos = requests.get(url2,auth=(ram,auth)).json()
     commits=[]
     for repo in repos:
-        commits+=repo['name']
+        x=repo['name']
+        commits+=x
+        f.write(x)
     for repo in repos:
         repo_name=repo['name']
         commits+=repo_name
-        f.write(repo_name+"\n\n\n")
+        f.write("NAME: "+repo_name+"\n\n\n")
         commit_url="https://api.github.com/repos/"+name+"/"+repo_name+"/commits"
         all=requests.get(commit_url,auth=(ram,auth)).json()
         for a in all:

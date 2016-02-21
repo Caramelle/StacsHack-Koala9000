@@ -1,3 +1,4 @@
+
 import requests
 import json
 import nltk
@@ -72,7 +73,7 @@ def hello():
     name=request.form['name']
     url2="https://api.github.com/users/"+name+"/repos"
     ram='zachbpd'
-    auth = "bff4bb007ab76467aa71b3a51798940c2c4d9508"
+    auth = "d7852482e5450c9a52e48a108bf95e24de838c58"
     repos = requests.get(url2, auth=(ram,auth)).json()
     words=""
     tokens=[]
@@ -84,14 +85,15 @@ def hello():
         all=requests.get(commit_url, auth=(ram,auth)).json()
         for a in all:
             if(type(a) is dict):
+                last=a['sha']
                 x=str(a['commit']['message'])
                 y=nltk.tokenize.regexp_tokenize(x, r'\w+')
-                if(len(y)>4):
-                    tokens+=y
+                y=[q.lower() for q in y if len(q)>3 and q!="__init__"]
+                tokens+=y
                 words=words+" ".join(y)
     res=""
     score="0"
-    freq= nltk.FreqDist(tokens).most_common(10)
+    freq= nltk.FreqDist(tokens).most_common(7)
     xs=[]
     ys=[]
     for (a,b) in freq:

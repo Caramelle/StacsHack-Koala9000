@@ -107,7 +107,7 @@ def hello():
     response = alchemyapi.sentiment('text', words)
     if response['status'] == 'OK':
         res=response['docSentiment']['type']
-        if(res.equals("positive")):
+        if(res =="positive"):
             song = random.choice(sad)
         else:
             song = random.choice(happy)

@@ -99,6 +99,7 @@ def hello():
         ys.append(b)
     di = {'values':ys, 'names': xs}
     df = pd.DataFrame(di)
+    song = ""
     qq={'a':2}
     output_file("tutorial_sharing.html")
     plot = Bar(df,'names', values='values', title="test chart",xlabel="Words", ylabel="Frequency")
@@ -107,14 +108,13 @@ def hello():
     if response['status'] == 'OK':
         res=response['docSentiment']['type']
         if(res <= 0):
-            print(random.choice(sad))
+            song = random.choice(sad)
         else:
-            print(random.choice(happy))
-
+            song = random.choice(happy)
     if 'score' in response['docSentiment']:
         score=response['docSentiment']['score']
     script, div = components(plot)
-    return render_template('commits.html', script=script, div=div,score=score,res=res,name=name)
+    return render_template('commits.html', script=script, div=div,score=score,res=res,name=name, song = song)
 
 
 if __name__ == '__main__':

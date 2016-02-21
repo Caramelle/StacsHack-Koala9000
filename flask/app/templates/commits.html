@@ -9,6 +9,11 @@
     <h2>Hi, {{ name }} !</h2>
     <h4> From your commits, I can tell that you are {{res}} with a score of {{ score }}</h4>
   </div>
+  <div class = "music">
+  		<audio controls
+    		<source src={{song}} type="audio/mpeg">
+		</audio> 
+  </div>
   <div class="stat">
     {{ div|safe }}
   </div>

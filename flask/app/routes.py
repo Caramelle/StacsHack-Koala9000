@@ -5,7 +5,7 @@ import nltk
 import random
 import unirest
 import sentiments
-from bokeh.plotting import figure, output_file, show,line
+from bokeh.plotting import figure, output_file, show
 import numpy as np
 from alchemyapi import AlchemyAPI
 from flask import Flask, render_template, request, jsonify
@@ -86,7 +86,7 @@ def hello():
      """
     return render_template('commits.html', name=name,res=res,score=score,snippet=snippet)
 
-""def build_plot(x,y):
+"""def build_plot(x,y):
 
     # Set the output for our plot.
 
@@ -104,6 +104,6 @@ def hello():
 
     # Return the snippet we want to place in our page.
 
-    return snippet
+    return snippet"""
 if __name__ == '__main__':
     app.run(debug=True)

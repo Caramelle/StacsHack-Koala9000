@@ -2,8 +2,6 @@
 {% block content %}
   <div class="jumbo">
     <h2>Hi, {{ name }} !</h2>
-    {% for commit in commits %}
-         {{ commit }}
-    {% endfor %}
+    <p> From your commits, I can tell that you are {{res}}</p>
   </div>
 {% endblock %}

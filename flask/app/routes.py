@@ -53,7 +53,7 @@ def login():
 @app.route('/commits', methods=['POST'])
 def hello():
 
-    sad_uri = 'spotify:artist:06HL4z0CvFAxyc27GXpf02'
+    sad_uri = 'spotify:artist:6eUKZXaKkcviH0Ku9w2n3V'
     happy_uri = 'spotify:artist:7MhMgCo0Bl0Kukl93PZbYS'
 
     spotify = spotipy.Spotify()

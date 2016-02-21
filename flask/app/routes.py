@@ -5,6 +5,7 @@ import nltk
 import random
 import unirest
 import sentiments
+from alchemyapi import AlchemyAPI
 from flask import Flask, render_template, request, jsonify
 from forms import LoginForm
 
@@ -35,7 +36,7 @@ def hello():
     name=request.form['name']
     url2="https://api.github.com/users/"+name+"/repos"
     ram='comRamona'
-    auth= 'd3fd78a853bda3a636ee51e655f2cc6476a37498'
+    auth= '5dc6fe61936907c04d3e424ef42f688c26ef770f'
     repos = requests.get(url2,auth=(ram,auth)).json()
     words=""
     for repo in repos:
@@ -53,24 +54,17 @@ def hello():
                 words=words+" ".join(y)
                 f.write(x)
     f.close()
-    k=len(words)
-    j=50
-    if(k<30):
-        j=k
-    words=random.sample(words, j)
-    response = unirest.post("https://atrilla-nlptools.p.mashape.com/?app_key=",
-    headers={
-    "X-Mashape-Key": "TfcYFWowjOmshyyeFxy2NY96rhlAp19z6pwjsnexQLc1Wj19WC",
-    "Content-Type": "application/x-www-form-urlencoded",
-    "Accept": "text/plain"
-    },
-    params={
-    "service": "sentiment_news",
-    "text": words
-    }
-    )
+    alchemyapi = AlchemyAPI()
+    response = alchemyapi.sentiment('text', words)
+    res=""
+    score="0"
+    if response['status'] == 'OK':
+        res=response['docSentiment']['type']
 
-    return render_template('commits.html', name=name,res=res)
+    if 'score' in response['docSentiment']:
+        score=response['docSentiment']['score']
+
+    return render_template('commits.html', name=name,res=res,score=score)
 
 if __name__ == '__main__':
     app.run(debug=True)

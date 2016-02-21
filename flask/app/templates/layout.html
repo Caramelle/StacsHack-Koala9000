@@ -1,26 +1,40 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <strong><link rel="stylesheet" media="screen" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" ></strong>
+    <strong><link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-responsive.min.css') }}"></strong>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Flask</title>
+
     <strong><link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"></strong>
   </head>
   <body>
+
     <header>
-  <div class="container">
-    <h1 class="logo">Flask App</h1>
-    <strong><nav>
-      <ul class="menu">
-        <li><a href="{{ url_for('home') }}">Home</a></li>
-        <li><a href="{{ url_for('about') }}">About</a></li>
-        <li><a href="{{ url_for('login') }}">Login</a></li>
-      </ul>
-    </nav></strong>
-  </div>
-</header>
+
+      {% block navbar %}
+      <div class="navbar navbar-fixed-top">
+        <h1 class="logo">Koala9000</h1>
+        <strong><nav>
+          <ul class="menu">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+          </ul>
+        </nav></strong>
+      </div>
+      {% endblock %}
+
+    </header>
+
 
     <div class="container">
       {% block content %}
       {% endblock %}
     </div>
+
   </body>
 </html>

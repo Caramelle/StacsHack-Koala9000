@@ -71,9 +71,9 @@ def hello():
 
     name=request.form['name']
     url2="https://api.github.com/users/"+name+"/repos"
-    ram='comRamona'
-    #auth=(ram,auth)
-    repos = requests.get(url2).json()
+    ram='zachbpd'
+    auth = "bff4bb007ab76467aa71b3a51798940c2c4d9508"
+    repos = requests.get(url2, auth=(ram,auth)).json()
     words=""
     tokens=[]
     for repo in repos:
@@ -81,7 +81,7 @@ def hello():
     for repo in repos:
         repo_name=repo['name']
         commit_url="https://api.github.com/repos/"+name+"/"+repo_name+"/commits"
-        all=requests.get(commit_url).json()
+        all=requests.get(commit_url, auth=(ram,auth)).json()
         for a in all:
             if(type(a) is dict):
                 x=str(a['commit']['message'])

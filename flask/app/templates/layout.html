@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    {% block scripts %}
+    {% endblock %}
     <strong><link rel="stylesheet" media="screen" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" ></strong>
     <strong><link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-responsive.min.css') }}"></strong>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -36,4 +38,3 @@
     </div>
 
   </body>
-</html>

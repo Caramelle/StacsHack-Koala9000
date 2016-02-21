@@ -1,7 +1,9 @@
 import requests
 import json
 import nltk
+import spotipy
 import random
+import spotipy
 import pandas as pd
 import numpy as np
 from numpy import pi
@@ -50,6 +52,23 @@ def login():
 
 @app.route('/commits', methods=['POST'])
 def hello():
+
+    sad_uri = 'spotify:artist:06HL4z0CvFAxyc27GXpf02'
+    happy_uri = 'spotify:artist:7MhMgCo0Bl0Kukl93PZbYS'
+
+    spotify = spotipy.Spotify()
+    sad_results = spotify.artist_top_tracks(sad_uri)
+    happy_results = spotify.artist_top_tracks(happy_uri)
+
+    sad = []
+    happy = []
+
+    for track in sad_results['tracks'][:10]:
+        sad.append(str(track['preview_url']))
+
+    for track in happy_results['tracks'][:10]:
+        happy.append(str(track['preview_url']))
+
     name=request.form['name']
     url2="https://api.github.com/users/"+name+"/repos"
     ram='comRamona'
@@ -87,6 +106,10 @@ def hello():
     response = alchemyapi.sentiment('text', words)
     if response['status'] == 'OK':
         res=response['docSentiment']['type']
+        if(res <= 0):
+            print(random.choice(sad))
+        else:
+            print(random.choice(happy))
 
     if 'score' in response['docSentiment']:
         score=response['docSentiment']['score']

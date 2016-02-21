@@ -1,9 +1,7 @@
 import requests
-import requests_cache
 import json
 import nltk
 import random
-import unirest
 import pandas as pd
 import numpy as np
 from numpy import pi
@@ -31,7 +29,6 @@ def create_app():
 
 app = Flask(__name__)
 app.config.from_object('config')
-requests_cache.install_cache('github_cache', backend='sqlite', expire_after=180)
 
 
 

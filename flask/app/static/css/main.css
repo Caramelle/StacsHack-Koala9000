@@ -35,6 +35,7 @@ header h1.logo:hover {
   text-decoration: underline;
 }
 
+
 /*
  * Center the body content
  */
@@ -54,6 +55,9 @@ div.jumbo {
           border-radius: 6px;
 }
 
+.stat {
+  padding-left: 170px;
+}
 
 h2 {
   font-size: 3em;
@@ -69,7 +73,10 @@ h3 {
   text-align: center;
   letter-spacing: 1px;
   color: #fff;
+}
 
+h4 {
+  text-align: center;
 }
 
 p {

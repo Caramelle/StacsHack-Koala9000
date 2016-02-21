@@ -108,9 +108,9 @@ def hello():
     if response['status'] == 'OK':
         res=response['docSentiment']['type']
         if(res =="positive"):
-            song = random.choice(sad)
-        else:
             song = random.choice(happy)
+        else:
+            song = random.choice(sad)
     if 'score' in response['docSentiment']:
         score=response['docSentiment']['score']
     script, div = components(plot)
